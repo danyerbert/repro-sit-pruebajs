@@ -11,6 +11,7 @@ if (!isset($_SESSION['id_usuarios'])) {
 }
 $usuario = $_SESSION['usuario'];
 $rol = $_SESSION['id_roles'];
+$id_usuario = $_SESSION['id_usuarios'];
 $idDispositivo = $_GET['id'];
 
 $_SESSION['lastId'] = $idDispositivo;
@@ -27,6 +28,8 @@ WHERE d.id_dispositivo = $idDispositivo";
 
 $resultado = $mysqli->query($sql);
 
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $id_usuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>

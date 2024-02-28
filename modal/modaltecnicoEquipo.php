@@ -26,14 +26,14 @@
                     <div class="form-group">
                         <label for="pila_bios">Cambio de pila de Bios?</label>
                         <div class="form-check">
-                            <input class="form-check-input i-radio" type="radio" name="pila_bios" id="pila_bios_1"
+                            <input class="form-check-input i-radio" type="radio" name="pila_bios" id="pila_bios"
                                 value="si">
                             <label class="form-check-label" for="pila_bios_1">
                                 Si
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="pila_bios" id="pila_bios_2"
+                            <input class="form-check-input " type="radio" name="pila_bios" id="pila_bios"
                                 value="no">
                             <label class="form-check-label" for="pila_bios_2">
                                 No
@@ -96,14 +96,14 @@
                     <div class="form-group">
                         <label for="serial_entrada_cara_b">Se realizo cambio de (Cara B)?</label>
                         <div class="form-check">
-                            <input class="form-check-input i-radio" type="radio" name="cara_b" id="serial_caraB"
+                            <input class="form-check-input i-radio" type="radio" name="serial_caraB" id="serial_caraB"
                                 value="si">
                             <label class="form-check-label" for="serial_caraB">
                                 Si
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="cara_b" id="serial_caraB"
+                            <input class="form-check-input " type="radio" name="serial_caraB" id="serial_caraB"
                                 value="no">
                             <label class="form-check-label" for="serial_caraB">
                                 No
@@ -114,14 +114,14 @@
                     <div class="form-group">
                         <label for="serial_entrada_cara_c">Se realizo cambio de (Cara C)?</label>
                         <div class="form-check">
-                            <input class="form-check-input i-radio" type="radio" name="cara_c" id="serial_caraC1"
+                            <input class="form-check-input i-radio" type="radio" name="serial_caraC" id="serial_caraC"
                                 value="si">
                             <label class="form-check-label" for="serial_caraC1">
                                 Si
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="cara_c" id="serial_caraC2"
+                            <input class="form-check-input " type="radio" name="serial_caraC" id="serial_caraC"
                                 value="no">
                             <label class="form-check-label" for="serial_caraC2">
                                 No
@@ -132,14 +132,14 @@
                     <div class="form-group">
                         <label for="serial_entrada_cara_d">Se realizo cambio de (Cara D)?</label>
                         <div class="form-check">
-                            <input class="form-check-input i-radio" type="radio" name="cara_d" id="serial_caraD1"
+                            <input class="form-check-input i-radio" type="radio" name="serial_caraD" id="serial_caraD"
                                 value="si">
                             <label class="form-check-label" for="serial_caraD1">
                                 Si
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="cara_d" id="serial_caraD2"
+                            <input class="form-check-input " type="radio" name="serial_caraD" id="serial_caraD"
                                 value="no">
                             <label class="form-check-label" for="serial_caraD2">
                                 No
@@ -217,28 +217,16 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for="serial_entrada_fan_cooler">Serial de entrada (fan cooler)</label>
-                        <input type="text" class="form-control" id="serial_entrada_fan_cooler"
-                            name="serial_entrada_fan_cooler">
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <label for="serial_salida_fan_cooler">Serial de salida (fan cooler)</label>
-                        <input type="text" class="form-control" id="serial_salida_fan_cooler"
-                            name="serial_salida_fan_cooler">
-                    </div>
-                    <hr>
-                    <div class="form-group">
                         <label for="fan_cooler">¿Cambio el fan cooler?</label>
                         <div class="form-check">
-                            <input class="form-check-input i-radio" type="radio" name="fan_cooler" id="fan_cooler_1"
+                            <input class="form-check-input i-radio" type="radio" name="fan_cooler" id="fan_cooler"
                                 value="si">
                             <label class="form-check-label" for="fan_cooler_1">
                                 Si
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="fan_cooler" id="fan_cooler_2"
+                            <input class="form-check-input " type="radio" name="fan_cooler" id="fan_cooler"
                                 value="no">
                             <label class="form-check-label" for="fan_cooler_2">
                                 No
@@ -251,11 +239,14 @@
                         <textarea class="form-control" id="observaciones" rows="3" name="observaciones"></textarea>
                     </div>
                     <hr>
-                    <input type="hidden" name="id_status" value="3">
-                    <input type="hidden" name="responsable" value="<?php echo $id_usuario;?>">
-                    <input type="hidden" name="id_roles" value="<?php echo $rol;?>">
-                    <input type="hidden" name="id_dispositivo" value="<?php echo $rowde['id_dispositivo']?>">
-                    <input type="hidden" name="tipo_de_dispositivo"
+                    <input type="hidden" id="id_status" name="id_status" value="3">
+                    <?php foreach($resultadoResponsable as $rowResponsable ):?>
+                    <input type="hidden" id="responsableRecepcion" name="responsableRecepcion" value="<?php echo $rowResponsable['usuario'];?>">
+                    <?php endforeach;?>
+                    <input type="hidden" id="responsable" name="responsable" value="<?php echo $id_usuario;?>">
+                    <input type="hidden" id="id_roles" name="id_roles" value="<?php echo $rol;?>">
+                    <input type="hidden" id="id_dispositivo" name="id_dispositivo" value="<?php echo $rowde['id_dispositivo']?>">
+                    <input type="hidden" id="tipo_de_dispositivo" name="tipo_de_dispositivo"
                         value="<?php echo $rowde['id_tipo_de_dispositivo'];?>">
                     <hr>
                     <button type="submit" class="btn btn-success">Actualizar</button>
