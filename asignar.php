@@ -172,7 +172,7 @@ $usuarios = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
                                             </td>
                                         </tr>
                                         <?php
-                                        include "modalAsignar.php";
+                                        include "modal/modalAsignar.php";
                                         endwhile;
                                     ?>
                                     </tbody>

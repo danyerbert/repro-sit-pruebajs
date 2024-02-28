@@ -72,6 +72,9 @@ $resultado14 = $mysqli->query($sql14);
 //Consulta para traer los datos de los motivos del porque entra el equipo.
 $sql15 = "SELECT id, motivo FROM tipo_de_motivo";
 $resultado15 = $mysqli->query($sql15);
+
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $idusuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>
@@ -280,7 +283,7 @@ $resultado15 = $mysqli->query($sql15);
 
     <?php require "inc/footer.php";?>
     <script src="js/function.js"></script>
-    <script src="js/registros/registrotrabajador.js"></script>
+    <script src="js/registros/registrarDispositivo.js"></script>
     <?php require "inc/script.php";?>
 
 </body>

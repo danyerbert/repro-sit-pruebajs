@@ -234,7 +234,7 @@ $usuario = $_SESSION['usuario'];
                 case 6:
                     $filenameDetalles = "asignar.php";
                     $notiText = "Asignar, ";
-                    $consultaver = "SELECT observaciones_analista, observaciones_tecnico, observaciones_verificador, registro, ic_dispositivo, id_tipo_de_dispositivo, id_estatus FROM datos_del_dispotivo WHERE coordinador = 6 ORDER BY registro DESC ";
+                    $consultaver = "SELECT observaciones_analista, observaciones_tecnico, observaciones_verificador, registro, id_dispositivo, ic_dispositivo, id_tipo_de_dispositivo, id_estatus FROM datos_del_dispotivo WHERE coordinador = 6 ORDER BY registro DESC ";
                     $resultadover = $mysqli->query($consultaver);
                     $numr = $resultadover->num_rows;
                     echo '

@@ -87,3 +87,23 @@ const validarResponsableEntrega = (responsableEntrega)=>{
 }
 
 
+
+// FUNCIONES DE VALIDACION PARA EL REGISTRO DEL DISPOSITIVO
+// 
+
+// FUNCION DE VALIDACIÓN DE SERIAL DEL EQUIPO
+
+const validarSerialEquipo = (serialEquipo)=>{
+    return /[A-Z0-9]{18}/.test(serialEquipo.trim());
+}
+
+
+// FUNCION DE VALIDACIÓN DE SERIAL DEL CARGADOR
+const validarSerialCargador = (serialCargador)=>{
+    return /[A-Z0-9]{21}/.test(serialCargador.trim());
+}
+
+// Validacion de nombre, que comprende solo letras, y con espacio para que pueda escribir el apellido
+const validarObservacion = (observacion)=>{
+    return /^[a-zA-Z\s]{4,60}/.test(observacion.trim());
+}

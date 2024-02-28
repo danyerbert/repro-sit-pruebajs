@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="guardarDispo.php" method="POST">
+                <form id="registroDispositivo">
                     <div class="form-group">
                         <label for="tipo_De_equipo">Tipo de Equipo</label>
                         <select name="tipo_de_equipo" id="tipo_De_equipo" class="form-control form-control-lg">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="serial_del_cargador">Serial del Cargador</label>
-                        <input type="text" class="form-control" id="serial_del_cargador" name="serial_cargador" pattern="[A-Z0-9]{18}" title="El serial contigo 18 digitos entre letras y numeros">
+                        <input type="text" class="form-control" id="serial_cargador" name="serial_cargador" pattern="[A-Z0-9]{18}" title="El serial contigo 18 digitos entre letras y numeros">
                         <span></span>
                     </div>
                     <div class="form-group">
@@ -35,8 +35,8 @@
                         <input type="date" class="form-control" id="fecha_de_recepcion" name="fecha_de_recepcion">
                     </div>
                     <div class="form-group">
-                        <label for="Estado_de_Recepción_Del_Equipo">Estado de Recepción Del Equipo</label>
-                        <select name="estado_recepcion" id="Estado_de_Recepción_Del_Equipo"
+                        <label for="estado_recepcion">Estado de Recepción Del Equipo</label>
+                        <select name="estado_recepcion" id="estado_recepcion"
                             class="form-control form-control-lg">
                             <?php foreach ($resultado11 as $row11) : ?>
                             <option value="<?php echo $row11['id']; ?>"><?php echo $row11['estado']; ?></option>
@@ -59,21 +59,26 @@
                     </div>
                     <div class="form-group">
                         <label for="falla">Motivo de ingreso</label>
-                        <select name="motivo_ingreso" id="motivoIngreso" class="form-control form-control-lg">
+                        <select name="motivoIngreso" id="motivoIngreso" class="form-control form-control-lg">
                             <?php foreach ($resultado15 as $row15) : ?>
                             <option value="<?php echo $row15['id']; ?>"><?php echo $row15['motivo']; ?>
                             </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <input type="hidden" name="origen" value="<?php echo $row['id_origen'];?>">
-                    <input type="hidden" name="id_roles" value="<?php echo $rol;?>">
-                    <input type="hidden" name="estatus" value="1">
-                    <input type="hidden" name="beneficiario" value="<?php echo $row['id_datos_del_entregante'];?>">
-                    <input type="hidden" name="responsable" value="<?php echo $idusuario;?>">
-                    <input type="hidden" name="coordinador" value="6">
+                    <input type="hidden" id="origen" name="origen" value="<?php echo $row['id_origen'];?>">
+                    <input type="hidden" id="id_roles" name="id_roles" value="<?php echo $rol;?>">
+                    <input type="hidden" id="estatus" name="estatus" value="1">
+                    <input type="hidden" id="beneficiario" name="beneficiario" value="<?php echo $row['id_datos_del_entregante'];?>">
+
+                    <?php foreach($resultadoResponsable as $rowResponsable ):?>
+                    <input type="hidden" id="responsableRecepcion" name="responsableRecepcion" value="<?php echo $rowResponsable['usuario'];?>">
+                    <?php endforeach;?>
+                    <input type="hidden" id="responsable" name="responsable" value="<?php echo $idusuario;?>">
+                    
+                    <input type="hidden" id="coordinador" name="coordinador" value="6">
                     <hr>
-                    <button type="submit" class="btn btn-success">Enviar</button>
+                 <input type="button" class="btn btn-success" onclick="registrarDispositivo()" value="Registrar">
                     <button type="reset" class="btn btn-danger">Refrescar</button>
                 </form>
             </div>
