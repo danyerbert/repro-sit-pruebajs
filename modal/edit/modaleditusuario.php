@@ -10,14 +10,28 @@
                 </button>
             </div>
             <div class="modal-body">
+<<<<<<< HEAD
                 <form id="editarusuario">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" id="usuario" aria-describedby="nameHelp" name="usuario" pattern="[a-zA-Z]{4,15}"
                             value="<?php echo $row['usuario'];?>">
+=======
+                <form action="php/update/editarusuario.php" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" class="form-control" id="usuario" aria-describedby="nameHelp" name="usuario"
+                            value="<?php echo $row['usuario'];?>" pattern="[a-zA-Z]{4,30}">
+>>>>>>> 2dfb02405d598528e48dd00c20002ed959e9b603
                     </div>
                     <div class="form-group">
+                        <label for="nombre">Contraseña</label>
+                        <input type="text" class="form-control" id="password" aria-describedby="nameHelp" name="password" pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}">
+                    </div>
+
+                    <div class="form-group">
                         <label for="nombre">Nombre</label>
+<<<<<<< HEAD
                         <input type="text" class="form-control" id="nombre" aria-describedby="nameHelp" name="nombre" pattern="[a-z-A-Z\s]"
                             value="<?php echo $row['nombre'];?>">
                     </div>
@@ -25,6 +39,15 @@
                         <label for="cedula">Cédula</label>
                         <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]{8}"
                             value="<?php echo $row['cedula'];?>">
+=======
+                        <input type="text" class="form-control" id="nombre" aria-describedby="nameHelp" name="nombre"
+                            value="<?php echo $row['nombre'];?>" pattern="[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]{4,30}">
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Cédula</label>
+                        <input type="text" class="form-control" id="cedula" name="cedula"
+                            value="<?php echo $row['cedula'];?>" pattern="[0-9]{8}">
+>>>>>>> 2dfb02405d598528e48dd00c20002ed959e9b603
                     </div>
                     <div class="form-group">
                         <label for="correo">Correo</label>

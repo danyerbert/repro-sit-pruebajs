@@ -87,3 +87,81 @@ const validarResponsableEntrega = (responsableEntrega)=>{
 }
 
 
+
+// FUNCIONES DE VALIDACION PARA EL REGISTRO DEL DISPOSITIVO
+// 
+
+// FUNCION DE VALIDACIÓN DE SERIAL DEL EQUIPO
+
+const validarSerialEquipo = (serialEquipo)=>{
+    return /[A-Za-z0-9\s]{8,18}/.test(serialEquipo.trim());
+}
+
+
+// FUNCION DE VALIDACIÓN DE SERIAL DEL CARGADOR
+const validarSerialCargador = (serialCargador)=>{
+    return /[A-Za-z0-9\s]{8,21}/.test(serialCargador.trim());
+}
+
+// Validacion de nombre, que comprende solo letras, y con espacio para que pueda escribir el apellido
+const validarObservacion = (observacion)=>{
+    return /^[a-zA-Z\s]{4,60}/.test(observacion.trim());
+}
+
+
+
+
+// FUNCIONES DE VALIDACION PARA EL REGISTRO DEL DISPOSITIVO EN REPARACION
+// 
+
+// VALIDACION DE TARJETA MADRE
+const validarTarjetaMadre = (tarjetaMadre) => {
+    return /[A-Za-z0-9\s]{8,30}/.test(tarjetaMadre.trim());
+}
+
+// VALIDACION DE BATERIA
+const validarBateria = (bateria) => {
+    return /[A-Za-z0-9\s]{8,25}/.test(bateria.trim());
+}
+
+// VALIDACION DE TARJETA IOS
+const validarTarjetaIOS = (tarjetaIOS) => {
+    return /[A-Za-z0-9\s]{8,25}/.test(tarjetaIOS.trim());
+}
+
+// VALIDACION DE DISCO DURO
+
+const validarDiscoDuro = (discoDuro) =>{
+    return /[A-Za-z0-9\s]{8,15}/.test(discoDuro.trim());
+}
+
+
+// VALIDAR SERIAL DE CARA A
+
+const validarSerialDeCaraA = (serialCaraA) =>{
+    return /[A-Za-z0-9\s]{8,18}/.test(serialCaraA.trim());
+}
+
+// VALIDAR MEMORIA RAM
+
+const validarMemoriaRam = (memoriaRam) =>{
+    return /[A-Za-z0-9\s]{8,15}/.test(memoriaRam.trim());
+}
+
+// VALIDAR TECLADO 
+
+const validarTeclado = (teclado) =>{
+    return /[A-Za-z0-9\s]{8,22}/.test(teclado.trim());
+} 
+
+// VALIDAR PANTALLA
+
+const validarPantalla = (pantalla) =>{
+    return /[A-Za-z0-9\s]{8,25}/.test(pantalla.trim());
+}
+
+// VALIDAR TARJETA DE RED
+
+const vailidarTarjetaRed = (tarjetaRed) =>{
+    return /[A-Za-z0-9\s]{8,18}/.test(tarjetaRed.trim());
+}

@@ -11,6 +11,7 @@ if (!isset($_SESSION['id_usuarios'])) {
 }
 $usuario = $_SESSION['usuario'];
 $rol = $_SESSION['id_roles'];
+$id_usuario = $_SESSION['id_usuarios'];
 $idDispositivo = $_GET['id'];
 
 $_SESSION['lastId'] = $idDispositivo;
@@ -27,6 +28,8 @@ WHERE d.id_dispositivo = $idDispositivo";
 
 $resultado = $mysqli->query($sql);
 
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $id_usuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>
@@ -148,16 +151,51 @@ $resultado = $mysqli->query($sql);
                 </div>
                 <?php
                      $verestatus = $rowde['estatus'];
+                     $tipoDeEquipo = $rowde['id_tipo_de_dispositivo'];
                      if ($verestatus == "En la linea") {
-                         echo '
+                         
+
+                         switch ($variable) {
+                            case 1:
+                                echo '
                          <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                        data-target="#verificarModal">
+                        data-target="#verificarModalTablet">
                         Reparado
                     </button>
                          ';
+                                break;
+                            case 2:
+                                echo '
+                         <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                        data-target="#verificarModalTablet">
+                        Reparado
+                    </button>
+                         ';
+                                break;
+                            case 9:
+                                echo '
+                         <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                        data-target="#verificarModalTablet">
+                        Reparado
+                    </button>
+                         ';
+                                break;
+                            default:
+                            echo '
+                            <!-- Button trigger modal -->
+                       <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                           data-target="#verificarModal">
+                           Reparado
+                       </button>
+                            ';
+                                break;
+                         }
                          }
                             include "modal/modaltecnicoEquipo.php";
+                            include "modal/modalreparaciontablet.php";
                             
                         ?>
             </div>
@@ -167,7 +205,9 @@ $resultado = $mysqli->query($sql);
 </div>
 </div>
 <!-- End of Main Content -->
-        <?php require "inc/footer.php";?>
+    <?php require "inc/footer.php";?>
+    <script src="js/function.js"></script>
+    <script src="js/registros/registroReparacion.js"></script>
     <?php require "inc/script.php";?>
 </body>
 

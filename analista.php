@@ -161,6 +161,9 @@ $resultado15 = $mysqli->query($sql15);
 </div>
 
     <?php require "inc/footer.php";?>
+    <script src="js/function.js"></script>
+    <script src="js/registros/registroapoyo.js"></script>
+    <script src="js/registros/registroBeneficiario.js"></script>
     <?php require "inc/script.php";?>
 
 </body>

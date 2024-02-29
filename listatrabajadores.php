@@ -11,7 +11,7 @@ $rol = $_SESSION['id_roles'];
 $idusuario = $_SESSION['id_usuarios'];
 // Consulta para traer los datos almacenados
 
-$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, a.nombre_del_area, c.tipo_de_cargo, v.estado_nombre FROM datos_del_entregante AS e 
+$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, e.descontinuado, a.nombre_del_area, c.tipo_de_cargo, v.estado_nombre FROM datos_del_entregante AS e 
 INNER JOIN area AS a ON a.id_area = e.id_area
 INNER JOIN cargo AS c ON c.id_cargo = e.id_cargo
 INNER JOIN estados_venezuela AS v ON v.id_estados = e.estado
@@ -72,6 +72,9 @@ $resultado14 = $mysqli->query($sql14);
 //Consulta para traer los datos de los motivos del porque entra el equipo.
 $sql15 = "SELECT id, motivo FROM tipo_de_motivo";
 $resultado15 = $mysqli->query($sql15);
+
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $idusuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>
@@ -205,6 +208,8 @@ $resultado15 = $mysqli->query($sql15);
                                     <tbody>
                                         <?php
                                         while ($row = $resultado->fetch_assoc()) :
+                                            $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
                                         ?>
                                         <tr>
                                             <td><?php echo $row['tipo_documento']; ?></td>
@@ -228,7 +233,7 @@ $resultado15 = $mysqli->query($sql15);
                                                         <div class="dropdown-menu">
 
                                                             <a class="dropdown-item btn btn-warning" data-toggle="modal" data-target="#editrabajador'.$row['id_datos_del_entregante'].'" href="#"><img src="img/svg/editar.svg " alt="Industrias Canaima" width="15" height="15"> Editar</a>
-                                                            <a class="dropdown-item btn btn-danger" href="eliminarbeneficiario.php?id='.$row['id_datos_del_entregante'].'"><img src="img/svg/eliminar.svg " alt="Industrias Canaima" width="15" height="15"> Eliminar</a>
+                                                            <a class="dropdown-item btn btn-danger" href="php/eliminar/eliminartrabajador.php?id='.$row['id_datos_del_entregante'].'"><img src="img/svg/eliminar.svg " alt="Industrias Canaima" width="15" height="15"> Eliminar</a>
                                                             <a class="dropdown-item btn btn-warning" data-toggle="modal" data-target="#modalDispo'.$row['id_datos_del_entregante'].'" href="#"><img src="img/svg/circulorelleno.svg " alt="Industrias Canaima" width="15" height="15"> Agregar</a>
                                                             </div>
                                                             </div>
@@ -256,7 +261,7 @@ $resultado15 = $mysqli->query($sql15);
                                             <?php
                             include "modal/edit/modaledittrabajador.php";
                             include "modal/modalDeRegistroDis.php";
-
+                            }
                             endwhile;
                         ?>
                                         </tr>
@@ -280,7 +285,7 @@ $resultado15 = $mysqli->query($sql15);
 
     <?php require "inc/footer.php";?>
     <script src="js/function.js"></script>
-    <script src="js/registros/registrotrabajador.js"></script>
+    <script src="js/registros/registrarDispositivo.js"></script>
     <?php require "inc/script.php";?>
 
 </body>

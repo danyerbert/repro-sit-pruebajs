@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input " type="radio" name="discapacidad_o_condicion"
-                                id="exampleRadios2" value="no" onclick = "javascript: var ch=document.getElementById('descripcionDiscapacidad');ch.style.display='none' ; "checked>
+                                id="exampleRadios2" value="no" onclick = "javascript: var ch=document.getElementById('descripcionDiscapacidad1');ch.style.display='none' ; "checked>
                             <label class="form-check-label" for="exampleRadios2">
                                 No
                             </label>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group" id="descripcionDiscapacidad" style="display:none">
                         <label for="exampleInputPassword1">Descripción De Discapacidad o Condición</label>
-                        <textarea class="form-control" rows="3" name="descripcion_discapacidad" id="descripcion_discapacidad"></textarea>
+                        <textarea class="form-control" rows="3" name="descripcionDiscapacidad" id="descripcionDiscapacidad"></textarea>
                         <span></span>
                     </div>
                     <div class="form-group">

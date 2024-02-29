@@ -42,7 +42,7 @@ $result = $mysqli->query($sql3);
 
 //Consulta para traer los datos almacenados de los dispositivos
 
-$sql2 = "SELECT d.ic_dispositivo, d.serial_equipo, d.serial_de_cargador, d.fecha_de_recepcion, d.estado_recepcion_equipo,d.fecha_de_entrega, d.observaciones_analista, d.id_datos_del_beneficiario, d.id_origen, j.nombre, j.modelo, k.origen, m.estatus, b.tipo_de_motivo , t.estado FROM datos_del_dispotivo AS d 
+$sql2 = "SELECT d.id_dispositivo,d.ic_dispositivo, d.serial_equipo, d.serial_de_cargador, d.fecha_de_recepcion, d.estado_recepcion_equipo,d.fecha_de_entrega, d.observaciones_analista, d.id_datos_del_beneficiario, d.id_origen, d.descontinuado, j.nombre, j.modelo, k.origen, m.estatus, b.tipo_de_motivo , t.estado FROM datos_del_dispotivo AS d 
 INNER JOIN tipo_de_equipo AS j ON j.id_tipo_de_equipo=d.id_tipo_de_dispositivo
 INNER JOIN origen AS k ON k.id_origen = d.id_origen
 INNER JOIN estatus AS m ON m.id_estatus = d.id_estatus
@@ -53,6 +53,8 @@ INNER JOIN datos_del_entregante AS e ON e.id_datos_del_entregante = d.id_datos_d
 $resultado8 = $mysqli->query($sql2);
 
 
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $id_usuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>
@@ -194,6 +196,11 @@ $resultado8 = $mysqli->query($sql2);
                                     <tbody>
                                         <?php
                                         while ($row = $resultado8->fetch_assoc()) :
+
+                                            $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
+                                                
+                                           
                                         ?>
                                         <tr>
                                             <td><?php echo $row['nombre']; ?></td>
@@ -225,7 +232,7 @@ $resultado8 = $mysqli->query($sql2);
                                                     width="15" height="15">
                                                 Editar</a>
                                                 <a class="dropdown-item btn btn-danger"
-                                                    href="eliminardispositivo.php?id='.$row['ic_dispositivo'].'"><img
+                                                    href="php/eliminar/eliminarDispositivo.php?id='.$row['id_dispositivo'].'"><img
                                                     src="img/svg/eliminar.svg " alt="Industrias Canaima" width="15"
                                                     height="15"> Eliminar</a>
                          ';
@@ -257,7 +264,10 @@ $resultado8 = $mysqli->query($sql2);
                                         ?>
 
                         </tr>
-                        <?php endwhile;?>
+                    <?php
+                     } 
+                        endwhile;
+                    ?>
                         </tbody>
                         </table>
                     </div>
@@ -273,6 +283,8 @@ $resultado8 = $mysqli->query($sql2);
     <!-- End of Main Content -->
 
     <?php require "inc/footer.php";?>
+    <script src="js/function.js"></script>
+    <script src="js/update/editarDispositivo.js"></script>
     <?php require "inc/script.php";?>
     
 </body>
