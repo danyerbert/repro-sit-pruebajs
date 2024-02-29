@@ -73,7 +73,7 @@ require "function.php";
         }
     }
     $nombreInstitucion = limpiarDatos($_POST['nombre_del_beneficiario']);
-    if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombreInstitucion)) {
+    if (!preg_match("/^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]{3,80}/", $nombreInstitucion)) {
         echo "
                 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
                 <script language='JavaScript'>
@@ -321,7 +321,7 @@ require "function.php";
                 
         ";
     }
-    $descripcionDisca = limpiarDatos($_POST['descripcion_discapacidad']);
+    $descripcionDisca = limpiarDatos($_POST['descripcionDiscapacidad']);
     if ($descripcionDisca == "") {
         $descripcionDisca = "No posee";
     }
