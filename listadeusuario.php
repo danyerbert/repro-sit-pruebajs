@@ -9,7 +9,7 @@ if (!isset($_SESSION['id_usuarios'])) {
 $usuario = $_SESSION['usuario'];
 $rol = $_SESSION['id_roles'];
 
-$consulta = "SELECT u.id_usuarios, u.usuario, u.nombre, u.cedula, u.password, u.correo, u.registro, r.roles FROM usuarios AS u INNER JOIN roles AS r ON r.id_roles=u.id_roles";
+$consulta = "SELECT u.id_usuarios, u.usuario, u.nombre, u.cedula, u.password, u.correo, u.registro, u.descontinuado, r.roles FROM usuarios AS u INNER JOIN roles AS r ON r.id_roles=u.id_roles";
 $resultado = $mysqli->query($consulta);
 
 $consulta1 = "SELECT id_roles, roles FROM roles";
@@ -133,7 +133,8 @@ $resultado1 = $mysqli->query($consulta1);
                                         <!-- Mostramos los resultados de la consultas realizadas de la tabla usuarios -->
                                         <?php
                                             while ($row = $resultado->fetch_assoc()) :
-                                                
+                                                $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
                                             ?>
                                         <tr>
                                             <td><?php echo $row['usuario']; ?></td>
@@ -168,6 +169,7 @@ $resultado1 = $mysqli->query($consulta1);
                                                 include "modal/edit/modaleditusuario.php";
                                             ?>
                                             <?php 
+                                            }
                                                 endwhile;
                                             ?>
                                         </tr>

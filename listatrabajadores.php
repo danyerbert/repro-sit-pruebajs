@@ -11,7 +11,7 @@ $rol = $_SESSION['id_roles'];
 $idusuario = $_SESSION['id_usuarios'];
 // Consulta para traer los datos almacenados
 
-$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, a.nombre_del_area, c.tipo_de_cargo, v.estado_nombre FROM datos_del_entregante AS e 
+$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, e.descontinuado, a.nombre_del_area, c.tipo_de_cargo, v.estado_nombre FROM datos_del_entregante AS e 
 INNER JOIN area AS a ON a.id_area = e.id_area
 INNER JOIN cargo AS c ON c.id_cargo = e.id_cargo
 INNER JOIN estados_venezuela AS v ON v.id_estados = e.estado
@@ -208,6 +208,8 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                     <tbody>
                                         <?php
                                         while ($row = $resultado->fetch_assoc()) :
+                                            $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
                                         ?>
                                         <tr>
                                             <td><?php echo $row['tipo_documento']; ?></td>
@@ -259,7 +261,7 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                             <?php
                             include "modal/edit/modaledittrabajador.php";
                             include "modal/modalDeRegistroDis.php";
-
+                            }
                             endwhile;
                         ?>
                                         </tr>

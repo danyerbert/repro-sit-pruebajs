@@ -13,7 +13,7 @@ $idusuario = $_SESSION['id_usuarios'];
 
 // Consulta para traer los datos almacenados
 
-$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, v.estado_nombre FROM datos_del_entregante AS e 
+$sql1 = "SELECT e.id_datos_del_entregante, e.nombre_del_beneficiario, d.tipo_documento, e.cedula, e.nombre_del_representante, e.correo, e.telefono, e.municipio, e.direccion, e.id_origen, e.descontinuado, v.estado_nombre FROM datos_del_entregante AS e 
 INNER JOIN estados_venezuela AS v ON v.id_estados = e.estado
 INNER JOIN tipo_documento AS d ON d.id_documento = e.tipo_documento WHERE e.id_origen = 1 ";
 
@@ -208,6 +208,8 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                     <tbody>
                                         <?php
                                         while ($row = $resultado->fetch_assoc()) :
+                                                $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
                                         ?>
                                         <tr>
                                             <td><?php echo $row['tipo_documento']; ?></td>
@@ -257,7 +259,7 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                             <?php
                             include "modal/edit/modaleditapoyo.php";
                             include "modal/modalDeRegistroDis.php";
-
+                        }
                             endwhile;
                         ?>
                                         </tr>
