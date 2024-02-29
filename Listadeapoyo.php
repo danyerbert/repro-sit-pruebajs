@@ -229,7 +229,7 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                                         <div class="dropdown-menu">
 
                                                             <a class="dropdown-item btn btn-warning" data-toggle="modal" data-target="#editBeneApoy'.$row['id_datos_del_entregante'].'" href="#"><img src="img/svg/editar.svg " alt="Industrias Canaima" width="15" height="15"> Editar</a>
-                                                            <a class="dropdown-item btn btn-danger" href="eliminarbeneficiario.php?id='.$row['id_datos_del_entregante'].'"><img src="img/svg/eliminar.svg " alt="Industrias Canaima" width="15" height="15"> Eliminar</a>
+                                                            <a class="dropdown-item btn btn-danger" href="php/eliminar/eliminarapoyo.php?id='.$row['id_datos_del_entregante'].'&origen=1"><img src="img/svg/eliminar.svg " alt="Industrias Canaima" width="15" height="15"> Eliminar</a>
                                                             <a class="dropdown-item btn btn-warning" data-toggle="modal" data-target="#modalDispo'.$row['id_datos_del_entregante'].'" href="#"><img src="img/svg/circulorelleno.svg " alt="Industrias Canaima" width="15" height="15"> Agregar</a>
                                                             </div>
                                                             </div>
