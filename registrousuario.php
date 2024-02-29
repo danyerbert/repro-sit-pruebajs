@@ -45,13 +45,13 @@ if ($_POST) {
     }
     
     $pass_c = sha1($password);
-
+    $descontinuado = 2;
     $sql = "SELECT correo FROM usuarios WHERE cedula = '$cedula'";
     $resultado = $mysqli->query($sql);
     $n = $resultado->num_rows;
 
     if ($n == 0) {
-        $sql1 = "INSERT INTO usuarios (id_usuarios, usuario, nombre, cedula, password, correo, id_roles) VALUES (null, '$usuario', '$nombre', '$cedula', '$pass_c', '$correo', '$perfil')";
+        $sql1 = "INSERT INTO usuarios (id_usuarios, usuario, nombre, cedula, password, correo, id_roles, descontinuado) VALUES (null, '$usuario', '$nombre', '$cedula', '$pass_c', '$correo', '$perfil', '$descontinuado')";
         if ($mysqli->query($sql1)===true) {
             $valido['success']=true;
             $valido['mensaje']="Registro exitoso";    

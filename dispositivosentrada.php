@@ -42,7 +42,7 @@ $result = $mysqli->query($sql3);
 
 //Consulta para traer los datos almacenados de los dispositivos
 
-$sql2 = "SELECT d.id_dispositivo,d.ic_dispositivo, d.serial_equipo, d.serial_de_cargador, d.fecha_de_recepcion, d.estado_recepcion_equipo,d.fecha_de_entrega, d.observaciones_analista, d.id_datos_del_beneficiario, d.id_origen, j.nombre, j.modelo, k.origen, m.estatus, b.tipo_de_motivo , t.estado FROM datos_del_dispotivo AS d 
+$sql2 = "SELECT d.id_dispositivo,d.ic_dispositivo, d.serial_equipo, d.serial_de_cargador, d.fecha_de_recepcion, d.estado_recepcion_equipo,d.fecha_de_entrega, d.observaciones_analista, d.id_datos_del_beneficiario, d.id_origen, d.descontinuado, j.nombre, j.modelo, k.origen, m.estatus, b.tipo_de_motivo , t.estado FROM datos_del_dispotivo AS d 
 INNER JOIN tipo_de_equipo AS j ON j.id_tipo_de_equipo=d.id_tipo_de_dispositivo
 INNER JOIN origen AS k ON k.id_origen = d.id_origen
 INNER JOIN estatus AS m ON m.id_estatus = d.id_estatus
@@ -196,6 +196,11 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                     <tbody>
                                         <?php
                                         while ($row = $resultado8->fetch_assoc()) :
+
+                                            $validacion = $row['descontinuado'];
+                                            if ($validacion == 2) {
+                                                
+                                           
                                         ?>
                                         <tr>
                                             <td><?php echo $row['nombre']; ?></td>
@@ -259,7 +264,10 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                                         ?>
 
                         </tr>
-                        <?php endwhile;?>
+                    <?php
+                     } 
+                        endwhile;
+                    ?>
                         </tbody>
                         </table>
                     </div>

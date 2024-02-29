@@ -151,16 +151,51 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
                 </div>
                 <?php
                      $verestatus = $rowde['estatus'];
+                     $tipoDeEquipo = $rowde['id_tipo_de_dispositivo'];
                      if ($verestatus == "En la linea") {
-                         echo '
+                         
+
+                         switch ($variable) {
+                            case 1:
+                                echo '
                          <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                        data-target="#verificarModal">
+                        data-target="#verificarModalTablet">
                         Reparado
                     </button>
                          ';
+                                break;
+                            case 2:
+                                echo '
+                         <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                        data-target="#verificarModalTablet">
+                        Reparado
+                    </button>
+                         ';
+                                break;
+                            case 9:
+                                echo '
+                         <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                        data-target="#verificarModalTablet">
+                        Reparado
+                    </button>
+                         ';
+                                break;
+                            default:
+                            echo '
+                            <!-- Button trigger modal -->
+                       <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                           data-target="#verificarModal">
+                           Reparado
+                       </button>
+                            ';
+                                break;
+                         }
                          }
                             include "modal/modaltecnicoEquipo.php";
+                            include "modal/modalreparaciontablet.php";
                             
                         ?>
             </div>
