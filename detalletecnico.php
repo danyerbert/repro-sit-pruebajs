@@ -170,7 +170,9 @@ $resultadoResponsable = $mysqli->query($sqlResponsable);
 </div>
 </div>
 <!-- End of Main Content -->
-        <?php require "inc/footer.php";?>
+    <?php require "inc/footer.php";?>
+    <script src="js/function.js"></script>
+    <script src="js/registros/registroReparacion.js"></script>
     <?php require "inc/script.php";?>
 </body>
 
