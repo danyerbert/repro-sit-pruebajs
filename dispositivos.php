@@ -52,6 +52,10 @@ INNER JOIN motivo AS b ON b.id_motivo = d.id_motivo
 INNER JOIN tipo_estado AS t ON t.id = d.estado_recepcion_equipo WHERE d.responsable = $idusuario AND d.id_estatus = $estatusenlace";
 
 $resultado8 = $mysqli->query($sql2);
+
+
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $idusuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -94,7 +94,7 @@ const validarResponsableEntrega = (responsableEntrega)=>{
 // FUNCION DE VALIDACIÓN DE SERIAL DEL EQUIPO
 
 const validarSerialEquipo = (serialEquipo)=>{
-    return /[A-Za-z0-9]{18}/.test(serialEquipo.trim());
+    return /[A-Za-z0-9\s]{8,18}/.test(serialEquipo.trim());
 }
 
 

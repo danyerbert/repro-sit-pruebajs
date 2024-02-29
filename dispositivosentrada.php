@@ -53,6 +53,8 @@ INNER JOIN datos_del_entregante AS e ON e.id_datos_del_entregante = d.id_datos_d
 $resultado8 = $mysqli->query($sql2);
 
 
+$sqlResponsable = "SELECT usuario FROM usuarios WHERE id_usuarios = $id_usuario AND id_roles = '$rol'";
+$resultadoResponsable = $mysqli->query($sqlResponsable);
 ?>
 
 <!DOCTYPE html>
@@ -273,6 +275,8 @@ $resultado8 = $mysqli->query($sql2);
     <!-- End of Main Content -->
 
     <?php require "inc/footer.php";?>
+    <script src="js/function.js"></script>
+    <script src="js/update/editarDispositivo.js"></script>
     <?php require "inc/script.php";?>
     
 </body>
