@@ -164,7 +164,7 @@ $usuario = $_SESSION['usuario'];
                     break;
                 case 5:
                     $estatusDispo = 4;
-                    $filenameDetalles = "detalles.php";
+                    $filenameDetalles = "detallesverificador.php";
                     $notiText = "Verificar, ";
                     $consultaver = "SELECT registro, observaciones_tecnico, id_dispositivo, id_tipo_de_dispositivo FROM
                     datos_del_dispotivo WHERE id_estatus = ".$estatusDispo." AND responsable = ".$id_usuarios." ORDER BY registro DESC ";

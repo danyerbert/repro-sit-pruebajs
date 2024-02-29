@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="registrarTrabajador">
+                <form action="registrartrabajador.php" method="POST">
                     <div class="form-group">
                         <label for="inputAddress">Ingrese la cedula</label>
                         <div class="input-group">
@@ -108,8 +108,7 @@
                     </div>
                     <hr>
                     <input type="hidden" id="origen" name="origen" value="3">
-                    <!-- <button type="submit" class="btn btn-success" name="registrar">Enviar</button> -->
-                    <input type="button" class="btn btn-success" onclick="registrarTrabajador()" value="Registrar">
+                    <button type="submit" class="btn btn-success" name="registrar">Enviar</button>
                     <button type="reset" class="btn btn-danger">Refrescar</button>
                 </form>
             </div>
