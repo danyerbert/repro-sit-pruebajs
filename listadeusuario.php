@@ -190,6 +190,7 @@ $resultado1 = $mysqli->query($consulta1);
 <?php require "inc/footer.php";?>
     <script src="js/function.js"></script>
     <script src="js/registrousuario.js"></script>
+    <script src="js/editar/editarusuario.js"></script>
     <?php require "inc/script.php";?>
 
 </body>

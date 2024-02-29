@@ -10,20 +10,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="updateUser.php" method="POST" autocomplete="off">
+                <form id="editarusuario">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" class="form-control" id="usuario" aria-describedby="nameHelp" name="usuario"
+                        <input type="text" class="form-control" id="usuario" aria-describedby="nameHelp" name="usuario" pattern="[a-zA-Z]{4,15}"
                             value="<?php echo $row['usuario'];?>">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" aria-describedby="nameHelp" name="nombre"
+                        <input type="text" class="form-control" id="nombre" aria-describedby="nameHelp" name="nombre" pattern="[a-z-A-Z\s]"
                             value="<?php echo $row['nombre'];?>">
                     </div>
                     <div class="form-group">
                         <label for="cedula">Cédula</label>
-                        <input type="text" class="form-control" id="cedula" name="cedula"
+                        <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]{8}"
                             value="<?php echo $row['cedula'];?>">
                     </div>
                     <div class="form-group">
@@ -41,9 +41,10 @@
                             <option value="5">Verificador</option>
                         </select>
                     </div>
-                    <input type="hidden" name="idEdit" value="<?php echo $row['id_usuarios'];?>">
+                    <input type="hidden" name="idEdit" id="idEdit" value="<?php echo $row['id_usuarios'];?>">
                     <hr>
-                    <button type="submit" class="btn btn-success" name="Update">Enviar</button>
+                    <!-- <button type="submit" class="btn btn-success" name="Update">Enviar</button> -->
+                    <input type="button" class="btn btn-success" onclick="editarUsuario()" value="Actualizar">
                     <button type="reset" class="btn btn-danger">Refrescar</button>
                 </form>
             </div>
